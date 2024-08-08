@@ -1,6 +1,14 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Nike Shoe Store Chatbot
+
+## About
+
+The Nike Shoe Store Chatbot is an AI-powered assistant designed to help customers find the perfect Nike shoes. It provides personalized recommendations, answers questions about products, and enhances the online shopping experience.
+
+
+
 
 ## Getting Started
+
 
 First, run the development server:
 
