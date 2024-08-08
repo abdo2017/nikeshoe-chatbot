@@ -10,17 +10,17 @@ export default function Home() {
       content: "Hi! I'm NikeBot, your personal assistant for all things Nike shoes. How can I help you today?",
     },
   ])
-  const [message, setMessage] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
+  const [currentMsg, setCurrentMsg] = useState('')
+  const [loadingState, setLoadingState] = useState(false)
 
   const sendMessage = async () => {
-    if (!message.trim() || isLoading) return;
-    setIsLoading(true)
+    if (!currentMsg.trim() || loadingState) return;
+    setLoadingState(true)
 
-    setMessage('')
+    setCurrentMsg('')
     setMessages((messages) => [
       ...messages,
-      { role: 'user', content: message },
+      { role: 'user', content: currentMsg },
       { role: 'assistant', content: '' },
     ])
 
@@ -30,11 +30,11 @@ export default function Home() {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify([...messages, { role: 'user', content: message }]),
+        body: JSON.stringify([...messages, { role: 'user', content: currentMsg }]),
       })
 
       if (!response.ok) {
-        throw new Error('Network response was not ok')
+        throw new Error('network Error')
       }
 
       const reader = response.body.getReader()
@@ -60,7 +60,7 @@ export default function Home() {
         { role: 'assistant', content: "⏲ backend Error,we are working on it, please try again soon and apologies for the inconvenience" },
       ])
     }
-    setIsLoading(false)
+    setLoadingState(false)
   }
   const handleKeyPress = (event) => {
     if (event.key === 'Enter' && !event.shiftKey) {
@@ -131,17 +131,17 @@ export default function Home() {
           <TextField
             label="Message"
             fullWidth
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
+            value={currentMsg}
+            onChange={(e) => setCurrentMsg(e.target.value)}
             onKeyPress={handleKeyPress}
-            disabled={isLoading}
+            disabled={loadingState}
           />
           <Button
             variant="contained"
             onClick={sendMessage}
-            disabled={isLoading}
+            disabled={loadingState}
           >
-            {isLoading ? 'Sending...' : 'Send'}
+            {loadingState ? 'Sending...' : 'Send'}
           </Button>
         </Stack>
       </Stack>
