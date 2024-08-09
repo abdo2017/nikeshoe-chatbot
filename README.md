@@ -24,6 +24,11 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+
+create an account on [openrouter ](https://openrouter.ai/) and create or copy your API key from [here](https://openrouter.ai/settings/keys)
+
+and paste it in your `.env.local` file with the name `OPENROUTER_API_KEY` as the chatbot will use it to send messages to the user
+
 You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
